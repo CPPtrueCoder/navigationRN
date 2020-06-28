@@ -2,6 +2,7 @@ import React ,{useState} from 'react';
 import {AppLoading} from "expo";
 import {StyleSheet, Text, View} from 'react-native';
 import {bootstrap} from "./src/bootstrap";
+import {AppNavigation} from "./src/navigation/appNavigation";
 
 export default function App() {
   
@@ -13,12 +14,7 @@ export default function App() {
             onError={err=>console.log(err)
         }/>
     }
-    return (
-		<View>
-			<Text>Open up App.js to start working on your app!</Text>
-		
-		</View>
-	);
+    return <AppNavigation/>
 }
 
 

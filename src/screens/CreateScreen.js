@@ -1,5 +1,6 @@
 import React from 'react'
 import {View, Text, StyleSheet} from 'react-native'
+import {MainScreen} from "./MainScreen";
 
 export const CreateScreen = ({}) => {
 	return <View style={styles.center}>
@@ -7,6 +8,9 @@ export const CreateScreen = ({}) => {
 	
 	
 	</View>
+};
+CreateScreen.navigationOptions={
+	headerTitle:'Создать'
 };
 
 const styles = StyleSheet.create ({
