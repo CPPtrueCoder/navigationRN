@@ -1,36 +1,43 @@
 import React from 'react'
-import {View, Text, StyleSheet,FlatList} from 'react-native'
+import {View, Text, StyleSheet, FlatList} from 'react-native'
 import {Button} from "react-native";
 import {DATA} from "../data";
 import {Post} from "../components/Post";
-import {HeaderButtons,Item} from 'react-navigation-header-buttons'
+import {HeaderButtons, Item} from 'react-navigation-header-buttons'
 import {AppHeaderIcon} from "../components/AppHeaderIcon";
 
 export const MainScreen = ({navigation}) => {
-
-	const openPostHandler = post =>{
-		navigation.navigate('Post',{
-			postId:post.id,date:post.date
+	
+	const openPostHandler = post => {
+		navigation.navigate ('Post', {
+			postId: post.id, date: post.date,booked:post.booked
 		});
 	};
 	
 	return (
-	<View style={styles.wrapper}>
-	
-	<FlatList data={DATA} keyExtractor={post=>post.id.toString()}
-	renderItem = {({item})=><Post post={item} onOpen={openPostHandler}/> }/>
-	</View>)};
+		<View style={styles.wrapper}>
+			<FlatList data={DATA} keyExtractor={post => post.id.toString ()}
+			          renderItem={({item}) => <Post post={item} onOpen={openPostHandler}/>}/>
+		</View>)
+};
 
-
-MainScreen.navigationOptions={
-headerTitle:'I HATE IT',
-	headerRight:<HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-		<Item title='Take photo' iconName='ios-camera'/>
+MainScreen.navigationOptions = {
+	headerTitle: 'I HATE IT',
+	//Need update for future versions from object to callback function with return JSX
+	headerRight: (<HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+		<Item title='Take photo'
+		      iconName='ios-camera'
+		      onPress={() => console.log ('Press')}/>
+	</HeaderButtons>),
+	headerLeft: <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+		<Item title='Toogle Drawer'
+		      iconName='ios-menu'
+		      onPress={() => console.log ('Press')}/>
 	</HeaderButtons>
 };
 
 const styles = StyleSheet.create ({
 	center: {
-		padding:10
+		padding: 10
 	}
 });
