@@ -3,6 +3,8 @@ import {View, Text, StyleSheet,FlatList} from 'react-native'
 import {Button} from "react-native";
 import {DATA} from "../data";
 import {Post} from "../components/Post";
+import {HeaderButtons,Item} from 'react-navigation-header-buttons'
+import {AppHeaderIcon} from "../components/AppHeaderIcon";
 
 export const MainScreen = ({navigation}) => {
 
@@ -22,7 +24,9 @@ export const MainScreen = ({navigation}) => {
 
 MainScreen.navigationOptions={
 headerTitle:'I HATE IT',
-	headerRight:<Text>Hello</Text>
+	headerRight:<HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+		<Item title='Take photo' iconName='ios-camera'/>
+	</HeaderButtons>
 };
 
 const styles = StyleSheet.create ({
